@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+	  <Nullable>enable</Nullable>
+	  <ImplicitUsings>enable</ImplicitUsings>
+
+	  <!-- Application Parameters -->
+
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <NoWarn>$(NoWarn);1591;8603</NoWarn>
+
+	  <!--As linhas abaixo corrigem o problems de :HTTP Error 500.30 - ANCM In-Process Start Failure-->
+	  <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+	  <AspNetCoreModuleName>AspNetCoreModule</AspNetCoreModuleName>
+	  <UserSecretsId>4940c770-09a2-44b3-bad4-040d68a4956f</UserSecretsId>
+	  <!--As linhas abaixo corrigem o problems de :HTTP Error 500.30 - ANCM In-Process Start Failure-->
+	  <RootNamespace>mongo_webapi</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ProjectApp\**" />
+    <Content Remove="ProjectApp\**" />
+    <EmbeddedResource Remove="ProjectApp\**" />
+    <None Remove="ProjectApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="IService.cs" />
+    <Compile Remove="Service.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidator.Core" Version="1.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\building blocks\Mongo.Domain.Core\Mongo.Domain.Core.csproj" />
+    <ProjectReference Include="..\..\building blocks\Mongo.Infrastructure.Core\Mongo.Infrastructure.Core.csproj" />
+  </ItemGroup>
+
+</Project>
